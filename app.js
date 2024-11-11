@@ -3,15 +3,15 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-// Configuración de la conexión a la base de datos
 const config = {
   server: "localhost", // Nombre del servidor
-  database: "CreciApp", // Nombre de tu base de datos
+  database: "CRECI", // Nombre de tu base de datos
   options: {
     encrypt: true,
     trustServerCertificate: true,
   },
 };
+
 
 // Crear un pool de conexión
 const pool = new sql.ConnectionPool(config);
