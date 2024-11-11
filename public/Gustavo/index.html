@@ -3,32 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creci - Iniciar Sesión o Registrarse</title>
+  <title>Creci - Acompañándote en esta aventura de ser mamá</title>
   <link rel="stylesheet" href="../Itzel/css.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Bienvenido a Creci</h1>
+  <!-- Barra de navegación -->
+  <nav class="navbar">
+    <h1 class="logo">Creci</h1>
+    <ul class="nav-links">
+      <li><a href="#salud" onclick="mostrarSeccion('salud')">Salud</a></li>
+      <li><a href="#alimentacion" onclick="mostrarSeccion('alimentacion')">Alimentación</a></li>
+      <li><a href="#momentos" onclick="mostrarSeccion('momentos')">Momentos Especiales</a></li>
+      <li><a href="#prevencion" onclick="mostrarSeccion('prevencion')">Prevención</a></li>
+      <li><a href="#personalizacion" onclick="mostrarSeccion('personalizacion')">Personalización</a></li>
+    </ul>
+  </nav>
 
-  <!-- Formulario de Registro -->
-  <section>
-    <h2>Registro</h2>
-    <form id="registroForm">
-      <input type="text" id="nombre" placeholder="Nombre" required><br>
-      <input type="email" id="correo" placeholder="Correo" required><br>
-      <input type="password" id="contraseña" placeholder="Contraseña" required><br>
-      <button type="button" onclick="registrarUsuario()">Registrarse</button>
-    </form>
+  <!-- Encabezado principal -->
+  <header class="encabezado">
+    <h1>Acompañándote en esta aventura de ser mamá</h1>
+  </header>
+
+  <!-- Pantalla de bienvenida -->
+  <section id="bienvenida" class="bienvenida">
+    <p>Bienvenida a Creci, la aplicación pensada para acompañarte en cada etapa del crecimiento de tu bebé.</p>
+    <p>Recuerda que ser mamá es un viaje único y estamos aquí para hacerlo más fácil y especial. ¡Disfruta cada momento!</p>
   </section>
 
-  <!-- Formulario de Inicio de Sesión -->
-  <section>
-    <h2>Iniciar Sesión</h2>
-    <form id="loginForm">
-      <input type="email" id="correoLogin" placeholder="Correo" required><br>
-      <input type="password" id="contraseñaLogin" placeholder="Contraseña" required><br>
-      <button type="button" onclick="iniciarSesion()">Iniciar Sesión</button>
-    </form>
-  </section>
+  <!-- Secciones de contenido principal -->
+  <main class="contenido-principal">
+    <!-- Resto de las secciones (Salud, Alimentación, Momentos Especiales, Prevención, Personalización) igual que en el código que proporcionaste -->
+    <!-- Coloca las secciones aquí -->
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="pie-pagina">
+    <p>&copy; 2024 Creci. Todos los derechos reservados.</p>
+  </footer>
 
   <script src="../Nelly/js.js"></script>
 </body>
