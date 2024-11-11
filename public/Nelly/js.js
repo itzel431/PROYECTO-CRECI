@@ -1,39 +1,36 @@
-// Función para mostrar solo la sección seleccionada
-function mostrarSeccion(id) {
-  const secciones = document.querySelectorAll(".seccion-oculta");
-  document.getElementById("bienvenida").style.display = "none"; // Oculta la bienvenida
-  secciones.forEach(seccion => {
-    seccion.style.display = "none";
+async function registrarUsuario() {
+  const nombre = document.getElementById("nombre").value;
+  const correo = document.getElementById("correo").value;
+  const contraseña = document.getElementById("contraseña").value;
+
+  const response = await fetch("http://localhost:3000/registro", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ nombre, correo, contraseña })
   });
-  document.getElementById(id).style.display = "block";
+
+  if (response.ok) {
+    alert("Registro exitoso");
+  } else {
+    alert("Error en el registro");
+  }
 }
 
-// Función para mostrar recomendaciones y formularios específicos
-function mostrarRecomendaciones(id) {
-  document.querySelectorAll(".recomendaciones-ocultas").forEach(element => {
-    element.style.display = "none";
+async function iniciarSesion() {
+  const correo = document.getElementById("correoLogin").value;
+  const contraseña = document.getElementById("contraseñaLogin").value;
+
+  const response = await fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ correo, contraseña })
   });
-  document.getElementById(id).style.display = "block";
-}
 
-function mostrarFormularioSalud() {
-  document.getElementById("formularioSalud").style.display = "block";
-}
-
-// Registro de Salud
-function registrarSalud() {
-  const nombre = document.getElementById("nombreBebe").value;
-  const peso = document.getElementById("pesoBebe").value;
-  const comidas = document.getElementById("comidasDia").value;
-  const horasSueno = document.getElementById("horasSueno").value;
-  const enfermedades = document.getElementById("enfermedadesRecientes").value;
-
-  const fecha = new Date().toLocaleDateString();
-  const tabla = document.getElementById("tablaSalud").querySelector("tbody");
-  const nuevaFila = document.createElement("tr");
-
-  nuevaFila.innerHTML = `<td>${fecha}</td><td>${nombre}</td><td>${peso}</td><td>${comidas}</td><td>${horasSueno}</td><td>${enfermedades}</td>`;
-  tabla.appendChild(nuevaFila);
-
-  document.getElementById("saludForm").reset();
+  if (response.ok) {
+    alert("Inicio de sesión exitoso");
+    // Redirigir a la página principal después del inicio de sesión
+    window.location.href = "principal.html"; // Cambia esto según la estructura
+  } else {
+    alert("Correo o contraseña incorrectos");
+  }
 }

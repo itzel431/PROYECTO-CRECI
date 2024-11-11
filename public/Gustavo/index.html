@@ -3,91 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creci - Acompañándote en esta aventura de ser mamá</title>
-  <!-- Enlace al archivo CSS (ajustado) -->
+  <title>Creci - Iniciar Sesión o Registrarse</title>
   <link rel="stylesheet" href="../Itzel/css.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Barra de navegación -->
-  <nav class="navbar">
-    <h1 class="logo">Creci</h1>
-    <ul class="nav-links">
-      <li><a href="#salud" onclick="mostrarSeccion('salud')">Salud</a></li>
-      <li><a href="#alimentacion" onclick="mostrarSeccion('alimentacion')">Alimentación</a></li>
-      <li><a href="#momentos" onclick="mostrarSeccion('momentos')">Momentos Especiales</a></li>
-      <li><a href="#prevencion" onclick="mostrarSeccion('prevencion')">Prevención</a></li>
-      <li><a href="#personalizacion" onclick="mostrarSeccion('personalizacion')">Personalización</a></li>
-    </ul>
-  </nav>
+  <h1>Bienvenido a Creci</h1>
 
-  <!-- Encabezado principal -->
-  <header class="encabezado">
-    <h1>Acompañándote en esta aventura de ser mamá</h1>
-  </header>
-
-  <!-- Pantalla de bienvenida -->
-  <section id="bienvenida" class="bienvenida">
-    <p>Bienvenida a Creci, la aplicación pensada para acompañarte en cada etapa del crecimiento de tu bebé.</p>
-    <p>Recuerda que ser mamá es un viaje único y estamos aquí para hacerlo más fácil y especial. ¡Disfruta cada momento!</p>
+  <!-- Formulario de Registro -->
+  <section>
+    <h2>Registro</h2>
+    <form id="registroForm">
+      <input type="text" id="nombre" placeholder="Nombre" required><br>
+      <input type="email" id="correo" placeholder="Correo" required><br>
+      <input type="password" id="contraseña" placeholder="Contraseña" required><br>
+      <button type="button" onclick="registrarUsuario()">Registrarse</button>
+    </form>
   </section>
 
-  <!-- Contenido principal con secciones -->
-  <main class="contenido-principal">
-    <!-- Aquí se colocan las secciones, como la de Salud -->
-    <section id="salud" class="seccion-oculta">
-      <h2>Salud</h2>
-      <div class="opciones-salud">
-        <button onclick="mostrarRecomendaciones('recomendacionesSalud')">Recomendaciones de Salud</button>
-        <button onclick="mostrarFormularioSalud()">Registrar Datos de Salud</button>
-      </div>
-      <div id="recomendacionesSalud" class="recomendaciones-ocultas">
-        <h3>Recomendaciones para la Salud del Bebé</h3>
-        <ul>
-          <li>Programa visitas regulares al pediatra.</li>
-          <li>Asegura que el bebé duerma en una posición segura y cómoda.</li>
-          <li>Realiza seguimiento mensual de peso y crecimiento.</li>
-        </ul>
-      </div>
-      <div id="formularioSalud" class="formulario-oculto">
-        <!-- Formulario de registro de salud -->
-        <form id="saludForm">
-          <label>Nombre del bebé: <input type="text" id="nombreBebe" required></label>
-          <label>Peso (kg): <input type="number" id="pesoBebe" required></label>
-          <label>Comidas al día: <input type="number" id="comidasDia" required></label>
-          <label>Horas de sueño: <input type="number" id="horasSueno" required></label>
-          <label>Enfermedades recientes: <input type="text" id="enfermedadesRecientes"></label>
-          <button type="button" onclick="registrarSalud()">Registrar</button>
-        </form>
-        <table id="tablaSalud">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Nombre</th>
-              <th>Peso (kg)</th>
-              <th>Comidas al día</th>
-              <th>Horas de sueño</th>
-              <th>Enfermedades recientes</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
+  <!-- Formulario de Inicio de Sesión -->
+  <section>
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+      <input type="email" id="correoLogin" placeholder="Correo" required><br>
+      <input type="password" id="contraseñaLogin" placeholder="Contraseña" required><br>
+      <button type="button" onclick="iniciarSesion()">Iniciar Sesión</button>
+    </form>
+  </section>
 
-    <!-- Otras secciones siguen aquí -->
-
-  </main>
-
-  <!-- Pie de página -->
-  <footer class="pie-pagina">
-    <p>&copy; 2024 Creci. Todos los derechos reservados.</p>
-  </footer>
-
-  <!-- Enlace al archivo JavaScript (ajustado) -->
   <script src="../Nelly/js.js"></script>
 </body>
 </html>

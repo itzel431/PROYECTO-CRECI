@@ -1,23 +1,24 @@
-const sql = require('mssql');
+const sql = require("mssql");
 
-const dbConfig = {
-  user: 'Creci',         // Cambia por tu usuario de SQL Server
-  password: 'Creci',  // Cambia por tu contraseña
-  server: 'localhost',        // Cambia si usas un servidor remoto
-  database: 'CRECI',
+const config = {
+  user: "tuUsuario", // Coloca aquí tu usuario de SQL Server
+  password: "tuContraseña", // Coloca aquí tu contraseña de SQL Server
+  server: "localhost",
+  database: "CreciApp",
   options: {
-    encrypt: true,            // Activa si usas Azure; desactiva para SQL Server local
-    enableArithAbort: true
+    encrypt: true,
+    trustServerCertificate: true
   }
 };
 
-const conectarDB = async () => {
+const pool = new sql.ConnectionPool(config);
+const connectDB = async () => {
   try {
-    await sql.connect(dbConfig);
-    console.log('Conectado a la base de datos');
+    await pool.connect();
+    console.log("Conexión a la base de datos exitosa");
   } catch (error) {
-    console.error('Error conectando a la base de datos:', error);
+    console.error("Error de conexión a la base de datos:", error);
   }
 };
 
-module.exports = { conectarDB, sql };
+module.exports = { pool, connectDB };
