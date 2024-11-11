@@ -1,22 +1,45 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { conectarDB } = require('./database');
-
+const sql = require("mssql");
+const express = require("express");
 const app = express();
-const PORT = 3000;
+const port = 3000;
 
-// Conectar a la base de datos
-conectarDB();
+// Configuración de la conexión a la base de datos
+const config = {
+  server: "localhost", // Nombre del servidor
+  database: "CreciApp", // Nombre de tu base de datos
+  options: {
+    encrypt: true,
+    trustServerCertificate: true,
+  },
+};
 
-// Middleware
-app.use(bodyParser.json());
-app.use(express.static('public'));
+// Crear un pool de conexión
+const pool = new sql.ConnectionPool(config);
+const poolConnect = pool.connect();
+app.use(express.json()); // Para parsear JSON en el cuerpo de la solicitud
 
-// Rutas de ejemplo
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/itzel/index.html');
+// Ruta para registrar nuevos usuarios
+app.post("/registro", async (req, res) => {
+  const { nombre, correo, contraseña } = req.body; // Datos que recibe del frontend
+
+  try {
+    // Consulta SQL para insertar un nuevo usuario en la base de datos
+    const query = `
+      INSERT INTO Usuarios (Nombre, Correo, Contraseña)
+      VALUES (@nombre, @correo, @contraseña);
+    `;
+    const request = pool.request();
+    request.input("nombre", sql.NVarChar, nombre);
+    request.input("correo", sql.NVarChar, correo);
+    request.input("contraseña", sql.NVarChar, contraseña);
+    await request.query(query);
+
+    res.send("Usuario registrado exitosamente");
+  } catch (err) {
+    console.error("Error registrando usuario:", err);
+    res.status(500).send("Error en el registro");
+  }
 });
-
-app.listen(PORT, () => {
-  console.log(`Servidor en funcionamiento en http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Servidor en funcionamiento en http://localhost:${port}`);
 });
