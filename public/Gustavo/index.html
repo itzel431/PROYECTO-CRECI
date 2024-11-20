@@ -3,94 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creci - Tu compañero en la maternidad</title>
+  <title>Creci - Tu Compañero en la Maternidad</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Pantalla de Inicio de Sesión -->
-  <section id="login" class="active">
-    <div class="login-container">
-      <h2>Inicia Sesión</h2>
-      <form id="loginForm" class="form">
-        <label for="loginEmail">Correo Electrónico:</label>
-        <input type="email" id="loginEmail" required>
-        <label for="loginPassword">Contraseña:</label>
-        <input type="password" id="loginPassword" required>
-        <button type="button" onclick="loginUser()">Iniciar Sesión</button>
-      </form>
-      <p>¿No tienes cuenta? <a href="#" onclick="showRegister()">Regístrate aquí</a></p>
-    </div>
-  </section>
+  <header class="header">
+    <h1 class="logo">Creci</h1>
+    <p class="tagline">Acompañándote en cada paso</p>
+  </header>
 
-  <!-- Pantalla de Registro -->
-  <section id="register">
-    <div class="register-container">
-      <h2>Regístrate</h2>
-      <form id="registerForm" class="form">
-        <label for="registerName">Nombre:</label>
-        <input type="text" id="registerName" required>
-        <label for="registerEmail">Correo Electrónico:</label>
-        <input type="email" id="registerEmail" required>
-        <label for="registerPassword">Contraseña:</label>
-        <input type="password" id="registerPassword" required>
-        <button type="button" onclick="registerUser()">Registrarse</button>
-      </form>
-      <p>¿Ya tienes cuenta? <a href="#" onclick="showLogin()">Inicia sesión aquí</a></p>
-    </div>
-  </section>
-
-  <!-- Pantalla de Selección de Plan -->
-  <section id="selectPlan">
-    <h2>Selecciona tu Plan</h2>
-    <div class="plans">
-      <div class="plan">
-        <h3>Básico</h3>
-        <p>Gratis</p>
-        <ul>
-          <li>Funciones esenciales</li>
-          <li>Acceso limitado</li>
-        </ul>
-        <button type="button" onclick="selectPlan('Basico')">Seleccionar</button>
-      </div>
-      <div class="plan premium">
-        <h3>Premium</h3>
-        <p>$9.99/mes</p>
-        <ul>
-          <li>Acceso completo</li>
-          <li>Herramientas avanzadas</li>
-        </ul>
-        <button type="button" onclick="selectPlan('Premium')">Seleccionar</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pantalla Principal (Interfaz con apartados) -->
-  <main id="mainContent" class="main-content">
-    <header class="header">
-      <h1 class="logo">Creci</h1>
-      <p class="tagline">Tu compañero en la maternidad</p>
-    </header>
+  <main class="content">
     <section id="home" class="active">
-      <h2>Bienvenida</h2>
-      <p>Selecciona una acción para continuar:</p>
-      <div class="actions-grid">
-        <button onclick="switchTab('growth')"><i class="fas fa-baby"></i>Crecimiento</button>
-        <button onclick="switchTab('health')"><i class="fas fa-heartbeat"></i>Salud</button>
-        <button onclick="switchTab('diaper')"><i class="fas fa-baby-carriage"></i>Cambio de Pañal</button>
-        <button onclick="switchTab('soothe')"><i class="fas fa-cloud-moon"></i>Calmar</button>
-        <button onclick="switchTab('daily')"><i class="fas fa-calendar-alt"></i>Diario</button>
-        <button onclick="switchTab('moments')"><i class="fas fa-camera-retro"></i>Momentos</button>
-        <button onclick="switchTab('guides')"><i class="fas fa-book"></i>Guías</button>
-        <button onclick="switchTab('activities')"><i class="fas fa-running"></i>Actividades</button>
+      <div class="welcome">
+        <h2>¡Hola, mamá!</h2>
+        <p>Selecciona una acción para continuar:</p>
+      </div>
+      <div class="menu-grid">
+        <button class="menu-item" onclick="switchTab('growth')">
+          <i class="fas fa-baby"></i>
+          <span>Crecimiento</span>
+        </button>
+        <button class="menu-item" onclick="switchTab('health')">
+          <i class="fas fa-heartbeat"></i>
+          <span>Salud</span>
+        </button>
+        <button class="menu-item" onclick="switchTab('diaper')">
+          <i class="fas fa-baby-carriage"></i>
+          <span>Cambio de Pañal</span>
+        </button>
+        <button class="menu-item" onclick="switchTab('soothe')">
+          <i class="fas fa-cloud-moon"></i>
+          <span>Calmar</span>
+        </button>
+        <button class="menu-item" onclick="switchTab('daily')">
+          <i class="fas fa-calendar-alt"></i>
+          <span>Diario</span>
+        </button>
+        <button class="menu-item" onclick="switchTab('moments')">
+          <i class="fas fa-camera-retro"></i>
+          <span>Momentos</span>
+        </button>
+        <button class="menu-item" onclick="switchTab('guides')">
+          <i class="fas fa-book"></i>
+          <span>Guías</span>
+        </button>
+        <button class="menu-item" onclick="switchTab('activities')">
+          <i class="fas fa-running"></i>
+          <span>Actividades</span>
+        </button>
+        <button class="menu-item" onclick="switchTab('advice')">
+          <i class="fas fa-lightbulb"></i>
+          <span>Consejos</span>
+        </button>
+        <button class="menu-item" onclick="switchTab('accidentPrevention')">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>Prevención de Accidentes</span>
+        </button>
       </div>
     </section>
 
-    <!-- Secciones adicionales (Crecimiento, Diario, Momentos, Guías) -->
+    <section id="soothe">
+      <button class="back-button" onclick="switchTab('home')"><i class="fas fa-home"></i></button>
+      <h2>Calmar a tu bebé</h2>
+      <button onclick="playWhiteNoise()">Reproducir Ruido Blanco</button>
+      <button onclick="stopWhiteNoise()">Detener Ruido Blanco</button>
+    </section>
+
+    <section id="advice">
+      <button class="back-button" onclick="switchTab('home')"><i class="fas fa-home"></i></button>
+      <h2>Consejos Útiles</h2>
+      <ul>
+        <li><strong>Alimentación saludable:</strong> Asegúrate de incluir frutas, verduras y proteínas en cada comida.</li>
+        <li><strong>Consejos preventivos:</strong> Lleva a tu bebé al pediatra para chequeos regulares.</li>
+        <li><strong>Estimulación temprana:</strong> Habla con tu bebé desde el primer día. Les ayuda a desarrollar habilidades lingüísticas.</li>
+        <li><strong>Higiene:</strong> Mantén las manos y objetos del bebé siempre limpios, especialmente después de los cambios de pañales.</li>
+      </ul>
+    </section>
+
+    <section id="accidentPrevention">
+      <button class="back-button" onclick="switchTab('home')"><i class="fas fa-home"></i></button>
+      <h2>Prevención de Accidentes</h2>
+      <ul>
+        <li><strong>Uso de cinturón de seguridad:</strong> Siempre coloca a tu bebé en un asiento adecuado para su edad cuando viajes en coche.</li>
+        <li><strong>Evitar objetos pequeños:</strong> No dejes objetos pequeños al alcance del bebé, ya que puede tragarlos.</li>
+        <li><strong>Evitar caídas:</strong> Usa barreras en las escaleras y asegura que los muebles sean estables.</li>
+        <li><strong>Cuidado con el agua:</strong> Nunca dejes a tu bebé solo cerca del agua, incluso en una bañera pequeña.</li>
+      </ul>
+    </section>
+
+    <section id="health">
+      <button class="back-button" onclick="switchTab('home')"><i class="fas fa-home"></i></button>
+      <h2>Salud del Bebé</h2>
+      <form id="healthForm">
+        <label>Fecha de la última visita: <input type="date" id="healthDate" required></label>
+        <label>Tipo de vacuna administrada: <input type="text" id="vaccineType" required></label>
+        <button type="button" onclick="registerVaccine()">Registrar Vacuna</button>
+      </form>
+      <ul id="vaccineList"></ul>
+    </section>
+
     <section id="growth">
-      <h2>Crecimiento</h2>
-      <p>Registra el peso, altura y desarrollo de tu bebé:</p>
+      <button class="back-button" onclick="switchTab('home')"><i class="fas fa-home"></i></button>
+      <h2>Seguimiento del Crecimiento</h2>
       <form id="growthForm">
         <label>Altura (cm): <input type="number" id="height" required></label>
         <label>Peso (kg): <input type="number" id="growthWeight" required></label>
@@ -116,36 +132,53 @@
       </table>
     </section>
 
-    <section id="daily">
-      <h2>Diario</h2>
-      <p>Escribe tus pensamientos y experiencias del día:</p>
-      <form id="diaryForm">
-        <label>Fecha: <input type="date" id="diaryDate" required></label>
-        <label>Escribe aquí:
-          <textarea id="diaryEntry" rows="4"></textarea>
+    <section id="diaper">
+      <button class="back-button" onclick="switchTab('home')"><i class="fas fa-home"></i></button>
+      <h2>Cambio de Pañal</h2>
+      <form id="diaperForm">
+        <label>Hora: <input type="time" id="diaperTime" required></label>
+        <label>Tipo: 
+          <select id="diaperType">
+            <option value="Mojado">Mojado</option>
+            <option value="Sucio">Sucio</option>
+            <option value="Ambos">Ambos</option>
+          </select>
         </label>
-        <button type="button" onclick="addDiaryEntry()">Guardar</button>
+        <button type="button" onclick="registerDiaperChange()">Registrar</button>
       </form>
-      <div id="diaryEntries"></div>
+      <ul id="diaperList"></ul>
     </section>
 
     <section id="moments">
-      <h2>Momentos</h2>
-      <p>Sube fotos y describe los momentos importantes:</p>
+      <button class="back-button" onclick="switchTab('home')"><i class="fas fa-home"></i></button>
+      <h2>Captura Momentos</h2>
       <form id="momentsForm">
-        <label>Foto: <input type="file" id="momentPhoto" accept="image/*"></label>
-        <label>Descripción: <input type="text" id="momentDescription"></label>
+        <label>Foto: <input type="file" id="momentPhoto" accept="image/*" required></label>
+        <label>Descripción: <input type="text" id="momentDescription" required></label>
         <button type="button" onclick="addMoment()">Guardar</button>
+        <button type="button" onclick="openCamera()">Abrir Cámara</button>
+        <button type="button" onclick="closeCamera()">Cerrar Cámara</button>
       </form>
       <div id="momentsGallery"></div>
     </section>
 
     <section id="guides">
+      <button class="back-button" onclick="switchTab('home')"><i class="fas fa-home"></i></button>
       <h2>Guías</h2>
       <ul>
         <li><i class="fas fa-book"></i> <a href="#">Alimentación saludable</a></li>
         <li><i class="fas fa-book"></i> <a href="#">Cómo calmar al bebé</a></li>
         <li><i class="fas fa-book"></i> <a href="#">Hitos del desarrollo</a></li>
+      </ul>
+    </section>
+
+    <section id="activities">
+      <button class="back-button" onclick="switchTab('home')"><i class="fas fa-home"></i></button>
+      <h2>Actividades para tu bebé</h2>
+      <ul>
+        <li><i class="fas fa-baby-carriage"></i> Paseo en el parque</li>
+        <li><i class="fas fa-futbol"></i> Juegos de estimulación</li>
+        <li><i class="fas fa-paint-brush"></i> Pintura con los dedos</li>
       </ul>
     </section>
   </main>
