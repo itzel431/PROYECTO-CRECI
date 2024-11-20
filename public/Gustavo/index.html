@@ -3,164 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creci - Acompañándote en esta aventura de ser mamá</title>
+  <title>Creci - Tu compañero en la maternidad</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Barra de navegación -->
-  <nav class="navbar">
-    <h1 class="logo">Creci</h1>
-    <ul class="nav-links">
-      <li><a href="#salud" onclick="mostrarSeccion('salud')">Salud</a></li>
-      <li><a href="#alimentacion" onclick="mostrarSeccion('alimentacion')">Alimentación</a></li>
-      <li><a href="#momentos" onclick="mostrarSeccion('momentos')">Momentos Especiales</a></li>
-      <li><a href="#prevencion" onclick="mostrarSeccion('prevencion')">Prevención</a></li>
-      <li><a href="#personalizacion" onclick="mostrarSeccion('personalizacion')">Personalización</a></li>
-    </ul>
-  </nav>
-
-  <!-- Encabezado principal -->
-  <header class="encabezado">
-    <h1>Acompañándote en esta aventura de ser mamá</h1>
-  </header>
-
-  <!-- Pantalla de bienvenida -->
-  <section id="bienvenida" class="bienvenida">
-    <p>Bienvenida a Creci, la aplicación pensada para acompañarte en cada etapa del crecimiento de tu bebé.</p>
-    <p>Recuerda que ser mamá es un viaje único y estamos aquí para hacerlo más fácil y especial. ¡Disfruta cada momento!</p>
+  <!-- Pantalla de Inicio de Sesión -->
+  <section id="login" class="active">
+    <div class="login-container">
+      <h2>Inicia Sesión</h2>
+      <form id="loginForm" class="form">
+        <label for="loginEmail">Correo Electrónico:</label>
+        <input type="email" id="loginEmail" required>
+        <label for="loginPassword">Contraseña:</label>
+        <input type="password" id="loginPassword" required>
+        <button type="button" onclick="loginUser()">Iniciar Sesión</button>
+      </form>
+      <p>¿No tienes cuenta? <a href="#" onclick="showRegister()">Regístrate aquí</a></p>
+    </div>
   </section>
 
-  <!-- Sección de contenido principal -->
-  <main class="contenido-principal">
-    <!-- Sección Salud -->
-    <section id="salud" class="seccion-oculta">
-      <h2>Salud</h2>
-      <div class="opciones-salud">
-        <button onclick="mostrarRecomendaciones('recomendacionesSalud')">Recomendaciones de Salud</button>
-        <button onclick="mostrarFormularioSalud()">Registrar Datos de Salud</button>
-      </div>
-      <div id="recomendacionesSalud" class="recomendaciones-ocultas">
-        <h3>Recomendaciones para la Salud del Bebé</h3>
-        <ul>
-          <li>Programa visitas regulares al pediatra.</li>
-          <li>Asegura que el bebé duerma en una posición segura y cómoda.</li>
-          <li>Realiza seguimiento mensual de peso y crecimiento.</li>
-          <!-- Más recomendaciones aquí -->
-        </ul>
-      </div>
-      <div id="formularioSalud" class="formulario-oculto">
-        <form id="saludForm">
-          <label>Nombre del bebé: <input type="text" id="nombreBebe" required></label>
-          <label>Peso (kg): <input type="number" id="pesoBebe" required></label>
-          <label>Comidas al día: <input type="number" id="comidasDia" required></label>
-          <label>Horas de sueño: <input type="number" id="horasSueno" required></label>
-          <label>Enfermedades recientes: <input type="text" id="enfermedadesRecientes"></label>
-          <button type="button" onclick="registrarSalud()">Registrar</button>
-        </form>
-        <table id="tablaSalud">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Nombre</th>
-              <th>Peso (kg)</th>
-              <th>Comidas al día</th>
-              <th>Horas de sueño</th>
-              <th>Enfermedades recientes</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Sección Alimentación -->
-    <section id="alimentacion" class="seccion-oculta">
-      <h2>Alimentación</h2>
-      <div class="opciones-alimentacion">
-        <button onclick="mostrarRecomendaciones('recomendacionesAlimentos')">Alimentos Recomendados</button>
-        <button onclick="mostrarFormularioAlimentacion()">Registrar Alimentación</button>
-      </div>
-      <div id="recomendacionesAlimentos" class="recomendaciones-ocultas">
-        <h3>Alimentos Recomendados para Bebés</h3>
-        <ul>
-          <li>Puré de verduras suaves (zanahoria, papa, calabaza).</li>
-          <li>Frutas en puré (manzana, pera, plátano).</li>
-          <li>Cereales sin azúcar ni sal.</li>
-          <!-- Más alimentos aquí -->
-        </ul>
-      </div>
-      <div id="formularioAlimentacion" class="formulario-oculto">
-        <form id="alimentacionForm">
-          <label>Alimento: <input type="text" id="alimento" required></label>
-          <label>Preparación: <textarea id="preparacion" required></textarea></label>
-          <label>Alergias: <input type="text" id="alergias"></label>
-          <button type="button" onclick="registrarAlimentacion()">Registrar</button>
-        </form>
-        <table id="tablaAlimentacion">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Alimento</th>
-              <th>Preparación</th>
-              <th>Alergias</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Sección Momentos Especiales -->
-    <section id="momentos" class="seccion-oculta">
-      <h2>Momentos Especiales</h2>
-      <form id="albumForm">
-        <label>Subir foto: <input type="file" id="fotoBebe" accept="image/*" required></label>
-        <label>Descripción: <input type="text" id="descripcionFoto" required></label>
-        <button type="button" onclick="agregarFoto()">Agregar al álbum</button>
+  <!-- Pantalla de Registro -->
+  <section id="register">
+    <div class="register-container">
+      <h2>Regístrate</h2>
+      <form id="registerForm" class="form">
+        <label for="registerName">Nombre:</label>
+        <input type="text" id="registerName" required>
+        <label for="registerEmail">Correo Electrónico:</label>
+        <input type="email" id="registerEmail" required>
+        <label for="registerPassword">Contraseña:</label>
+        <input type="password" id="registerPassword" required>
+        <button type="button" onclick="registerUser()">Registrarse</button>
       </form>
-      <div id="albumFotos" class="album"></div>
+      <p>¿Ya tienes cuenta? <a href="#" onclick="showLogin()">Inicia sesión aquí</a></p>
+    </div>
+  </section>
+
+  <!-- Pantalla de Selección de Plan -->
+  <section id="selectPlan">
+    <h2>Selecciona tu Plan</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Básico</h3>
+        <p>Gratis</p>
+        <ul>
+          <li>Funciones esenciales</li>
+          <li>Acceso limitado</li>
+        </ul>
+        <button type="button" onclick="selectPlan('Basico')">Seleccionar</button>
+      </div>
+      <div class="plan premium">
+        <h3>Premium</h3>
+        <p>$9.99/mes</p>
+        <ul>
+          <li>Acceso completo</li>
+          <li>Herramientas avanzadas</li>
+        </ul>
+        <button type="button" onclick="selectPlan('Premium')">Seleccionar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pantalla Principal (Interfaz con apartados) -->
+  <main id="mainContent" class="main-content">
+    <header class="header">
+      <h1 class="logo">Creci</h1>
+      <p class="tagline">Tu compañero en la maternidad</p>
+    </header>
+    <section id="home" class="active">
+      <h2>Bienvenida</h2>
+      <p>Selecciona una acción para continuar:</p>
+      <div class="actions-grid">
+        <button onclick="switchTab('growth')"><i class="fas fa-baby"></i>Crecimiento</button>
+        <button onclick="switchTab('health')"><i class="fas fa-heartbeat"></i>Salud</button>
+        <button onclick="switchTab('diaper')"><i class="fas fa-baby-carriage"></i>Cambio de Pañal</button>
+        <button onclick="switchTab('soothe')"><i class="fas fa-cloud-moon"></i>Calmar</button>
+        <button onclick="switchTab('daily')"><i class="fas fa-calendar-alt"></i>Diario</button>
+        <button onclick="switchTab('moments')"><i class="fas fa-camera-retro"></i>Momentos</button>
+        <button onclick="switchTab('guides')"><i class="fas fa-book"></i>Guías</button>
+        <button onclick="switchTab('activities')"><i class="fas fa-running"></i>Actividades</button>
+      </div>
     </section>
 
-    <!-- Sección Prevención -->
-    <section id="prevencion" class="seccion-oculta">
-      <h2>Prevención</h2>
-      <div class="opciones-prevencion">
-        <button onclick="mostrarPrevencion('atragantamiento')">Atragantamiento</button>
-        <button onclick="mostrarPrevencion('quemadura')">Quemadura</button>
-        <button onclick="mostrarPrevencion('caida')">Caída</button>
-        <!-- Más botones aquí -->
-      </div>
-      <div id="atragantamiento" class="prevencion-oculta">
-        <h4>Atragantamiento</h4>
-        <p>Pasos para ayudar a un bebé que se atraganta...</p>
-        <!-- Más contenido de prevención aquí -->
-      </div>
-      <div id="quemadura" class="prevencion-oculta">
-        <h4>Quemadura</h4>
-        <p>Pasos para tratar una quemadura en el bebé...</p>
-      </div>
-      <!-- Más contenido aquí -->
+    <!-- Secciones adicionales (Crecimiento, Diario, Momentos, Guías) -->
+    <section id="growth">
+      <h2>Crecimiento</h2>
+      <p>Registra el peso, altura y desarrollo de tu bebé:</p>
+      <form id="growthForm">
+        <label>Altura (cm): <input type="number" id="height" required></label>
+        <label>Peso (kg): <input type="number" id="growthWeight" required></label>
+        <label>Etapa: 
+          <select id="stage">
+            <option value="recién nacido">Recién Nacido</option>
+            <option value="lactante">Lactante</option>
+            <option value="gateador">Gateador</option>
+          </select>
+        </label>
+        <button type="button" onclick="registerGrowth()">Registrar</button>
+      </form>
+      <table id="growthTable">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Altura</th>
+            <th>Peso</th>
+            <th>Etapa</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </section>
 
-    <!-- Sección Personalización -->
-    <section id="personalizacion" class="seccion-oculta">
-      <h2>Personalización de Colores</h2>
-      <p>Selecciona una combinación de colores para personalizar la apariencia de la aplicación.</p>
-      <button onclick="cambiarColor('#FFC0CB', '#FF69B4')">Rosa</button>
-      <button onclick="cambiarColor('#ADD8E6', '#87CEFA')">Azul</button>
-      <button onclick="cambiarColor('#90EE90', '#32CD32')">Verde</button>
-      <button onclick="cambiarColor('#FFD700', '#FFA500')">Amarillo</button>
+    <section id="daily">
+      <h2>Diario</h2>
+      <p>Escribe tus pensamientos y experiencias del día:</p>
+      <form id="diaryForm">
+        <label>Fecha: <input type="date" id="diaryDate" required></label>
+        <label>Escribe aquí:
+          <textarea id="diaryEntry" rows="4"></textarea>
+        </label>
+        <button type="button" onclick="addDiaryEntry()">Guardar</button>
+      </form>
+      <div id="diaryEntries"></div>
+    </section>
+
+    <section id="moments">
+      <h2>Momentos</h2>
+      <p>Sube fotos y describe los momentos importantes:</p>
+      <form id="momentsForm">
+        <label>Foto: <input type="file" id="momentPhoto" accept="image/*"></label>
+        <label>Descripción: <input type="text" id="momentDescription"></label>
+        <button type="button" onclick="addMoment()">Guardar</button>
+      </form>
+      <div id="momentsGallery"></div>
+    </section>
+
+    <section id="guides">
+      <h2>Guías</h2>
+      <ul>
+        <li><i class="fas fa-book"></i> <a href="#">Alimentación saludable</a></li>
+        <li><i class="fas fa-book"></i> <a href="#">Cómo calmar al bebé</a></li>
+        <li><i class="fas fa-book"></i> <a href="#">Hitos del desarrollo</a></li>
+      </ul>
     </section>
   </main>
-
-  <!-- Pie de página -->
-  <footer class="pie-pagina">
-    <p>&copy; 2024 Creci. Todos los derechos reservados.</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
