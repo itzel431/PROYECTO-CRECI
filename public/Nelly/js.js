@@ -1,108 +1,119 @@
-// Función para mostrar solo la sección seleccionada
-function mostrarSeccion(id) {
-  const secciones = document.querySelectorAll(".seccion-oculta");
-  document.getElementById("bienvenida").style.display = "none"; // Oculta la bienvenida
-  secciones.forEach(seccion => {
-    seccion.style.display = "none";
-  });
-  document.getElementById(id).style.display = "block";
+let users = [];
+
+// Mostrar sección de inicio de sesión
+function showLogin() {
+  document.getElementById("login").classList.add("active");
+  document.getElementById("register").classList.remove("active");
+  document.getElementById("selectPlan").classList.remove("active");
+  document.getElementById("mainContent").classList.remove("active");
 }
 
-// Función para mostrar recomendaciones y formularios específicos
-function mostrarRecomendaciones(id) {
-  document.querySelectorAll(".recomendaciones-ocultas").forEach(element => {
-    element.style.display = "none";
-  });
-  document.getElementById(id).style.display = "block";
+// Mostrar sección de registro
+function showRegister() {
+  document.getElementById("register").classList.add("active");
+  document.getElementById("login").classList.remove("active");
 }
 
-function mostrarFormularioSalud() {
-  document.getElementById("formularioSalud").style.display = "block";
-}
+// Registro de usuario
+function registerUser() {
+  const name = document.getElementById("registerName").value;
+  const email = document.getElementById("registerEmail").value;
+  const password = document.getElementById("registerPassword").value;
 
-function mostrarFormularioAlimentacion() {
-  document.getElementById("formularioAlimentacion").style.display = "block";
-}
-
-// Registro de Salud
-function registrarSalud() {
-  const nombre = document.getElementById("nombreBebe").value;
-  const peso = document.getElementById("pesoBebe").value;
-  const comidas = document.getElementById("comidasDia").value;
-  const horasSueno = document.getElementById("horasSueno").value;
-  const enfermedades = document.getElementById("enfermedadesRecientes").value;
-  
-  const fecha = new Date().toLocaleDateString();
-  const tabla = document.getElementById("tablaSalud").querySelector("tbody");
-  const nuevaFila = document.createElement("tr");
-
-  nuevaFila.innerHTML = `<td>${fecha}</td><td>${nombre}</td><td>${peso}</td><td>${comidas}</td><td>${horasSueno}</td><td>${enfermedades}</td>`;
-  tabla.appendChild(nuevaFila);
-
-  document.getElementById("saludForm").reset();
-}
-
-// Registro de Alimentación
-function registrarAlimentacion() {
-  const alimento = document.getElementById("alimento").value;
-  const preparacion = document.getElementById("preparacion").value;
-  const alergias = document.getElementById("alergias").value;
-  
-  const fecha = new Date().toLocaleDateString();
-  const tabla = document.getElementById("tablaAlimentacion").querySelector("tbody");
-  const nuevaFila = document.createElement("tr");
-
-  nuevaFila.innerHTML = `<td>${fecha}</td><td>${alimento}</td><td>${preparacion}</td><td>${alergias}</td>`;
-  tabla.appendChild(nuevaFila);
-
-  document.getElementById("alimentacionForm").reset();
-}
-
-// Función para agregar fotos con descripción y fecha en el álbum
-function agregarFoto() {
-  const fotoInput = document.getElementById("fotoBebe");
-  const descripcion = document.getElementById("descripcionFoto").value;
-  const album = document.getElementById("albumFotos");
-
-  if (album.childElementCount >= 300) {
-    alert("El álbum ha alcanzado el límite de 300 fotos.");
+  if (users.some(user => user.email === email)) {
+    alert("Este correo ya está registrado.");
     return;
   }
 
-  const fotoURL = URL.createObjectURL(fotoInput.files[0]);
-  const contenedorFoto = document.createElement("div");
-  contenedorFoto.classList.add("foto-item");
-
-  contenedorFoto.innerHTML = `<img src="${fotoURL}" alt="Foto del bebé"><p>${descripcion}</p><p>${new Date().toLocaleDateString()}</p>`;
-  album.appendChild(contenedorFoto);
-
-  document.getElementById("albumForm").reset();
+  users.push({ name, email, password });
+  alert("Registro exitoso. Ahora puedes iniciar sesión.");
+  showLogin();
 }
 
-// Función para cambiar los colores de la interfaz
-function cambiarColor(bgColor, textColor) {
-  // Cambiar colores de fondo y texto de la interfaz completa
-  document.body.style.backgroundColor = bgColor;
-  document.body.style.color = textColor;
+// Inicio de sesión
+function loginUser() {
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
 
-  // Cambiar colores de la barra de navegación
-  const navbar = document.querySelector('.navbar');
-  navbar.style.backgroundColor = bgColor;
-  navbar.style.color = textColor;
-  navbar.querySelectorAll('a').forEach(link => {
-    link.style.color = textColor;
-  });
+  const user = users.find(user => user.email === email && user.password === password);
 
-  // Cambiar colores del pie de página
-  const piePagina = document.querySelector('.pie-pagina');
-  piePagina.style.backgroundColor = bgColor;
-  piePagina.style.color = textColor;
+  if (user) {
+    alert(`Bienvenido, ${user.name}`);
+    document.getElementById("selectPlan").classList.add("active");
+    document.getElementById("login").classList.remove("active");
+  } else {
+    alert("Credenciales incorrectas.");
+  }
 }
 
-// Mostrar detalles de prevención
-function mostrarPrevencion(id) {
-  document.querySelectorAll(".prevencion-oculta").forEach(element => {
-    element.style.display = "none";
+// Selección de plan
+function selectPlan(plan) {
+  alert(`Plan ${plan} seleccionado.`);
+  document.getElementById("mainContent").classList.add("active");
+  document.getElementById("selectPlan").classList.remove("active");
+}
+
+// Cambiar de pestañas en la interfaz principal
+function switchTab(tabId) {
+  document.querySelectorAll(".main-content section").forEach(section => {
+    section.classList.remove("active");
   });
-  document.getElementById(id).style.display = "block";
+  document.getElementById(tabId).classList.add("active");
+}
+
+// Registrar crecimiento
+function registerGrowth() {
+  const height = document.getElementById("height").value;
+  const weight = document.getElementById("growthWeight").value;
+  const stage = document.getElementById("stage").value;
+
+  const table = document.querySelector("#growthTable tbody");
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${new Date().toLocaleDateString()}</td>
+    <td>${height} cm</td>
+    <td>${weight} kg</td>
+    <td>${stage}</td>
+  `;
+  table.appendChild(row);
+  document.getElementById("growthForm").reset();
+}
+
+// Agregar entrada al diario
+function addDiaryEntry() {
+  const date = document.getElementById("diaryDate").value;
+  const entry = document.getElementById("diaryEntry").value;
+
+  const diaryContainer = document.getElementById("diaryEntries");
+  const div = document.createElement("div");
+
+  div.innerHTML = `
+    <h4>${date}</h4>
+    <p>${entry}</p>
+  `;
+  div.classList.add("diary-entry");
+  diaryContainer.appendChild(div);
+  document.getElementById("diaryForm").reset();
+}
+
+// Agregar momentos
+function addMoment() {
+  const photo = document.getElementById("momentPhoto").files[0];
+  const description = document.getElementById("momentDescription").value;
+
+  if (!photo) return alert("Por favor, sube una foto.");
+  const gallery = document.getElementById("momentsGallery");
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const div = document.createElement("div");
+    div.classList.add("moment-item");
+    div.innerHTML = `
+      <img src="${e.target.result}" alt="${description}">
+      <p>${description}</p>
+    `;
+    gallery.appendChild(div);
+  };
+  reader.readAsDataURL(photo);
 }
