@@ -1,3 +1,5 @@
+import app from "./firebase-config.js";
+
 // Cambiar entre secciones
 const switchSection = (current, next) => {
   document.getElementById(current).classList.remove('active');
