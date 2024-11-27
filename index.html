@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creci - Acompañándote en el arte de ser mamá</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Inicio de Sesión -->
+  <section id="login-section" class="section active">
+    <div class="container">
+      <h1 class="title">Creci</h1>
+      <p class="subtitle">Acompañándote en el arte de ser mamá</p>
+      <div class="card">
+        <h2>Inicia Sesión</h2>
+        <input type="email" id="email" placeholder="Correo Electrónico" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button class="btn" id="login-btn">Iniciar Sesión</button>
+        <button class="btn google" id="google-btn">Iniciar sesión con Google</button>
+        <p>¿No tienes cuenta? <a href="#" id="register-link">Regístrate aquí</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registro -->
+  <section id="register-section" class="section">
+    <div class="container">
+      <h1 class="title">Creci</h1>
+      <p class="subtitle">Crea tu cuenta para empezar</p>
+      <div class="card">
+        <h2>Regístrate</h2>
+        <input type="text" id="register-name" placeholder="Nombre" required>
+        <input type="email" id="register-email" placeholder="Correo Electrónico" required>
+        <input type="password" id="register-password" placeholder="Contraseña" required>
+        <button class="btn" id="register-btn">Crear Cuenta</button>
+        <p>¿Ya tienes cuenta? <a href="#" id="login-link">Inicia sesión aquí</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selección de Planes -->
+  <section id="plans-section" class="section">
+    <div class="container">
+      <h1 class="title">Creci</h1>
+      <p class="subtitle">Selecciona tu Plan</p>
+      <div class="plans">
+        <div class="plan">
+          <h3>Básico</h3>
+          <p>Gratis</p>
+          <ul>
+            <li>Funciones esenciales</li>
+            <li>Acceso limitado</li>
+          </ul>
+          <button class="btn plan-btn" data-plan="Básico">Seleccionar</button>
+        </div>
+        <div class="plan premium">
+          <h3>Premium</h3>
+          <p>$9.99/mes</p>
+          <ul>
+            <li>Acceso completo</li>
+            <li>Herramientas avanzadas</li>
+          </ul>
+          <button class="btn plan-btn" data-plan="Premium">Seleccionar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personalización de Perfil -->
+  <section id="profile-section" class="section">
+    <div class="container">
+      <h1 class="title">Personaliza tu Perfil</h1>
+      <p class="subtitle">Configura los datos básicos para empezar</p>
+      <div class="card">
+        <input type="text" id="baby-name" placeholder="Nombre del bebé" required>
+        <div class="gender">
+          <label><input type="radio" name="gender" value="Niña"> Niña</label>
+          <label><input type="radio" name="gender" value="Niño"> Niño</label>
+        </div>
+        <input type="date" id="birthdate" required>
+        <textarea id="preferences" placeholder="Describe tus preferencias"></textarea>
+        <button class="btn" id="finalize-profile-btn">Finalizar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interfaz Principal -->
+  <section id="main-interface" class="section">
+    <div class="container">
+      <h1 class="title">Creci</h1>
+      <p class="subtitle">Acompañándote en cada paso</p>
+      <div class="actions-grid">
+        <button class="btn"><i class="fas fa-baby"></i> Crecimiento</button>
+        <button class="btn"><i class="fas fa-heartbeat"></i> Salud</button>
+        <button class="btn"><i class="fas fa-calendar"></i> Diario</button>
+        <button class="btn"><i class="fas fa-camera"></i> Momentos</button>
+        <button class="btn"><i class="fas fa-book"></i> Guías</button>
+        <button class="btn"><i class="fas fa-lightbulb"></i> Consejos</button>
+        <button class="btn"><i class="fas fa-running"></i> Actividades</button>
+        <button class="btn"><i class="fas fa-exclamation-triangle"></i> Prevención de Accidentes</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
