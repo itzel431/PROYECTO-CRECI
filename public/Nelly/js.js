@@ -144,3 +144,212 @@ const showLoading = () => {
 
 // Ejemplo: Carga la interfaz después de finalizar personalización
 document.getElementById('finalize-profile-btn').addEventListener('click', showLoading);
+
+//Diario
+// Guardar entrada en el diario
+document.getElementById('save-diary-btn').addEventListener('click', function() {
+  const diaryInput = document.getElementById('diary-input');
+  if (diaryInput.value.trim() !== '') {
+    const entry = {
+      text: diaryInput.value,
+      date: new Date().toLocaleString()
+    };
+
+    // Guardar en el almacenamiento local
+    let entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
+    entries.push(entry);
+    localStorage.setItem('diaryEntries', JSON.stringify(entries));
+
+    // Mostrar las entradas actualizadas
+    displayDiaryEntries();
+    diaryInput.value = '';  // Limpiar el campo de entrada
+  }
+});
+
+// Mostrar las entradas del diario
+function displayDiaryEntries() {
+  const entriesContainer = document.getElementById('diary-entries');
+  entriesContainer.innerHTML = '';
+  const entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
+  
+  entries.forEach(entry => {
+    const entryElement = document.createElement('div');
+    entryElement.classList.add('diary-entry');
+    entryElement.innerHTML = `
+      <p><strong>${entry.date}</strong></p>
+      <p>${entry.text}</p>
+    `;
+    entriesContainer.appendChild(entryElement);
+  });
+}
+
+// Cargar las entradas cuando se carga la página
+window.addEventListener('load', displayDiaryEntries);
+
+
+//Momentos 
+// Tomar foto o seleccionar imagen
+document.getElementById('take-photo-btn').addEventListener('click', function() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.click();
+
+  input.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function() {
+        const imageUrl = reader.result;
+        const description = prompt('Ingresa una descripción para la foto:');
+        const moment = {
+          imageUrl: imageUrl,
+          description: description,
+          date: new Date().toLocaleString()
+        };
+
+        // Guardar en el almacenamiento local
+        let moments = JSON.parse(localStorage.getItem('moments')) || [];
+        moments.push(moment);
+        localStorage.setItem('moments', JSON.stringify(moments));
+
+        // Mostrar los momentos
+        displayMoments();
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+});
+
+// Mostrar los momentos guardados
+function displayMoments() {
+  const momentsContainer = document.getElementById('moments-container');
+  momentsContainer.innerHTML = '';
+  const moments = JSON.parse(localStorage.getItem('moments')) || [];
+  
+  moments.forEach(moment => {
+    const momentElement = document.createElement('div');
+    momentElement.classList.add('moment-entry');
+    momentElement.innerHTML = `
+      <img src="${moment.imageUrl}" alt="Foto del bebé" />
+      <p><strong>${moment.date}</strong></p>
+      <p>${moment.description}</p>
+    `;
+    momentsContainer.appendChild(momentElement);
+  });
+}
+
+// Cargar los momentos cuando se carga la página
+window.addEventListener('load', displayMoments);
+
+
+  //Salud
+  // Registrar datos de salud
+document.getElementById('save-health-btn').addEventListener('click', function() {
+  const allergies = document.getElementById('allergies').value;
+  const milkType = document.getElementById('milk-type').value;
+  const diapersType = document.getElementById('diapers-type').value;
+  const vaccinations = document.getElementById('vaccinations').value;
+  const doctorAppointments = document.getElementById('doctor-appointments').value;
+  const medications = document.getElementById('medications').value;
+
+  const healthData = {
+    allergies,
+    milkType,
+    diapersType,
+    vaccinations,
+    doctorAppointments,
+    medications,
+    date: new Date().toLocaleString()
+  };
+
+  // Guardar en el almacenamiento local
+  let healthRecords = JSON.parse(localStorage.getItem('healthRecords')) || [];
+  healthRecords.push(healthData);
+  localStorage.setItem('healthRecords', JSON.stringify(healthRecords));
+
+  // Mostrar los registros
+  displayHealthRecords();
+});
+
+// Mostrar los registros de salud
+function displayHealthRecords() {
+  const healthContainer = document.getElementById('health-records');
+  healthContainer.innerHTML = '';
+  const healthRecords = JSON.parse(localStorage.getItem('healthRecords')) || [];
+  
+  healthRecords.forEach(record => {
+    const recordElement = document.createElement('div');
+    recordElement.classList.add('health-record');
+    recordElement.innerHTML = `
+      <p><strong>${record.date}</strong></p>
+      <ul>
+        <li>Alergias: ${record.allergies}</li>
+        <li>Tipo de Leche: ${record.milkType}</li>
+        <li>Tipo de Pañales: ${record.diapersType}</li>
+        <li>Vacunas: ${record.vaccinations}</li>
+        <li>Citas con Pediatra: ${record.doctorAppointments}</li>
+        <li>Medicamentos: ${record.medications}</li>
+      </ul>
+    `;
+    healthContainer.appendChild(recordElement);
+  });
+}
+
+
+//Lactancia 
+// Iniciar y detener cronómetro de lactancia
+let timer;
+let seconds = 0;
+
+document.getElementById('start-lactation-btn').addEventListener('click', function() {
+  timer = setInterval(function() {
+    seconds++;
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    document.getElementById('lactation-time').innerText = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  }, 1000);
+});
+
+document.getElementById('stop-lactation-btn').addEventListener('click', function() {
+  clearInterval(timer);
+  // Guardar el tiempo de lactancia
+  const lactationData = {
+    time: document.getElementById('lactation-time').innerText,
+    date: new Date().toLocaleString()
+  };
+
+  let lactationRecords = JSON.parse(localStorage.getItem('lactationRecords')) || [];
+  lactationRecords.push(lactationData);
+  localStorage.setItem('lactationRecords', JSON.stringify(lactationRecords));
+
+  // Mostrar los registros de lactancia
+  displayLactationRecords();
+});
+
+// Mostrar los registros de lactancia
+function displayLactationRecords() {
+  const lactationContainer = document.getElementById('lactation-records');
+  lactationContainer.innerHTML = '';
+  const lactationRecords = JSON.parse(localStorage.getItem('lactationRecords')) || [];
+
+  lactationRecords.forEach(record => {
+    const recordElement = document.createElement('div');
+    recordElement.classList.add('lactation-record');
+    recordElement.innerHTML = `
+      <p><strong>${record.date}</strong></p>
+      <p>Tiempo de Lactancia: ${record.time}</p>
+    `;
+    lactationContainer.appendChild(recordElement);
+  });
+}
+
+// Cargar los registros cuando se carga la página
+window.addEventListener('load', displayLactationRecords);
+
+// Cargar los registros cuando se carga la página
+window.addEventListener('load', displayHealthRecords);
+
+    document.getElementById('diary-entries').innerHTML += entry;
+    document.getElementById('diary-input').value = ''; // Clear the input
+
